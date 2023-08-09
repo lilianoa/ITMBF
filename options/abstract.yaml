@@ -1,0 +1,37 @@
+exp:
+  dir: ./logs/mutan
+  resume: # last, best_[...], or empty (from scratch)
+dataset:
+  import: datasets.factory
+  dir: ../data/gas_data
+  train_split: train
+  eval_split: val # test
+  nb_threads: 4
+  batch_size: 32 # 64
+  nans: 2
+  max_length: 48
+model:
+  name: default
+  network:
+    import: models.networks.factory
+    name: itmbf_net # ban # san # itbf_net
+    img_enc: resnet50
+    txt_enc:
+      w_emb: glove300
+      t_emb: gru
+      dim: 1280  # 1280  # while SAN, it must be same as teh dim of img_enc, ie. 1024
+  criterion:
+    import: models.criterions.factory
+    name: cross_entropy
+  metric:
+    import: models.metrics.factory
+    name: accuracy # metric_test
+engine:
+  import: engines.factory
+  print_freq: 10
+  nb_epochs: 22
+  saving_criteria:
+  - accuracy:max
+misc:
+  cuda: True
+  seed: 1204

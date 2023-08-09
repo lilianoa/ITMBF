@@ -1,0 +1,8 @@
+__include__: abstract.yaml
+model:
+  network:
+    attention:
+      input_dims: [1280, 2048]
+      att_ff_size: 512
+      output_dim: 1000
+      num_att_layers: 2

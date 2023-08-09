@@ -1,0 +1,18 @@
+__include__: abstract.yaml
+model:
+  network:
+    attention:
+      v_fusion:
+        type: block_tucker
+        input_dims: [1280, 2048] #[2400, 2048]
+        output_dim: 1000 #Fixed
+        mm_dim: 235
+        dropout_input: 0.1
+        dropout_pre_lin: 0.
+      a_fusion:
+        type: block_tucker
+        input_dims: [1280, 2048]
+        output_dim: 1 #Fixed
+        mm_dim: 235
+        dropout_input: 0.1
+        dropout_pre_lin: 0.

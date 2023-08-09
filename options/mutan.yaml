@@ -1,0 +1,21 @@
+__include__: abstract.yaml
+model:
+  network:
+    attention:
+      # nb_heads: 5
+      v_fusion:
+        type: mutan
+        input_dims: [1280, 2048]     #[2400, 2048] [4800, 2048]
+        output_dim: 1000
+        mm_dim: 1000
+        rank: 10
+        dropout_input: 0.1
+        dropout_pre_lin: 0.
+      a_fusion:
+        type: mutan
+        input_dims: [1280, 2048]  # [4800, 4096]
+        output_dim: 1 #Fixed = nb_heads
+        mm_dim: 1000
+        rank: 10
+        dropout_input: 0.1
+        dropout_pre_lin: 0.
